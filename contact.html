@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GadgetZone | Contact</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+
+    <header>
+        <nav class="nav-container">
+            <div class="logo">Gadget<span>Zone</span></div>
+            <ul class="nav-links">
+                <li><a href="home.html" id="link-home">Home</a></li>
+                <li><a href="product.html" id="link-products">Products</a></li>
+                <li><a href="about.html" id="link-about">About</a></li>
+                <li><a href="contact.html" id="link-contact" class="active">Contact</a></li>
+                <li>
+                    <div class="cart-nav" onclick="toggleCartPanel(true)" style="cursor: pointer; display: flex; align-items: center; gap: 5px;">
+                        🛒 Cart (<span id="cart-counter">0</span>)
+                    </div>
+                </li>
+            </ul>
+        </nav> 
+    </header>
+
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <div class="cart-title-wrapper">
+                <span>🛒</span>
+                <h3>Your Cart</h3>
+            </div>
+            <button class="close-cart" onclick="toggleCartPanel(false)">&times;</button>
+        </div>
+        
+        <div class="cart-items-container" id="cartItemsList">
+        </div>
+        
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span class="total-label">Total Amount</span>
+                <span id="cartTotalPrice" class="total-price">0 Tsh</span>
+            </div>
+            
+            <button class="checkout-btn" onclick="alert('Proceeding to secure checkout...')">
+                Proceed to Checkout
+            </button>
+        </div>
+    </div>
+
+    <section id="contact">
+        <h2 class="section-title" id="contact-heading">Get In Touch</h2>
+        <div class="title-underline"></div>
+        <div class="contact-container">
+            <div class="contact-info">
+                <h3 id="info-title">Contact Details</h3>
+                <div class="info-item">
+                    <p><strong>📍 Office:</strong> Iringa Mall, Iringa, Tanzania</p>
+                </div>
+                <div class="info-item">
+                    <p><strong>📞 Phone:</strong> <a href="tel:+255618283410">+255618283410</a></p>
+                </div>
+                <div class="info-item">
+                    <p><strong>✉️ Email:</strong> <a href="email">clauskibasa@gmail.com</a></p>
+                </div>
+                
+                <div class="social-links">
+                    <a href="https://facebook.com" target="_blank" class="soc-fb">Facebook</a>
+                    <a href="https://instagram.com/ken_clouds" target="_blank" class="soc-ig">Instagram</a>
+                    <a href="https://youtube.com" target="_blank" class="soc-yt">YouTube</a>
+                </div>
+                <div class="map-container" style="width: 100%; height: 250px; margin-top: 15px;">
+                     <iframe 
+                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3946.012354876543!2d35.6946!3d-7.7724!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x18aa23afaaaaaaaf%3A0xabcdef123456789!2sIringa%20Mall!5e0!3m2!1sen!2stz!4v1718390000000!5m2!1sen!2stz" 
+                     loading="lazy" 
+                     style="border:0; width:100%; height:100%; border-radius: 16px; box-shadow: 0 4px 12px rgba(0,0,0,0.08);" allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
+
+            <div class="contact-form-card">
+                <h3 id="form-title">Send a Message</h3>
+                <form id="submissionForm" action="https://api.web3forms.com/submit" method="POST" onsubmit="return validateForm(event)">
+                    <input type="hidden" name="access_key" value="37d1d7d2-2ed5-4427-8fae-888ff934a284">
+                    <input type="hidden" name="subject" value="New Feedback from GadgetZone">
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName" id="lbl-fname">First Name</label>
+                            <input type="text" id="firstName" name="First Name">
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName" id="lbl-lname">Last Name</label>
+                            <input type="text" id="lastName" name="Last Name">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone" id="lbl-phone">Phone Number</label>
+                        <input type="text" id="phone" name="Phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="email" id="lbl-email">Email Address</label>
+                        <input type="email" id="email" name="Email">
+                    </div>
+                    <div class="form-group">
+                        <label for="comment" id="lbl-comment">Comment</label>
+                        <textarea id="comment" name="Message" rows="4"></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn" id="btn-submit">Submit Form</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026 GadgetZone. All Rights Reserved. Prepared for RIT 122 Assignment.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

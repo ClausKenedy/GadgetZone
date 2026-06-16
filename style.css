@@ -8,56 +8,59 @@
 }
 
 :root {
-    --bg-dark: #0f172a;       /* Deep slate tech background */
-    --bg-card: #1e293b;       /* Slightly lighter slate for elements */
-    --accent-blue: #38bdf8;   /* Bright electric cyan */
-    --accent-glow: #2563eb;   /* Premium royal blue */
-    --text-main: #f8fafc;     /* Clean off-white text */
-    --text-muted: #94a3b8;    /* Muted grey for subtexts */
+    --bg-dark: #0f172a;       
+    --bg-card: #1e293b;       
+    --accent-blue: #38bdf8;   
+    --accent-glow: #2563eb;   
+    --text-main: #f8fafc;     
+    --text-muted: #94a3b8;    
 }
 
 body {
     background-color: var(--bg-dark);
     color: var(--text-main);
     line-height: 1.6;
+    display: block;
+    min-height: 100vh;
 }
 
-/* --- Sticky Modern Compact Navbar --- */
+/* --- Sticky Modern Navbar (GadgetZone Kushoto, Navigation Kulia) --- */
 header {
-    background-color: rgba(15, 23, 42, 0.9);
+    background-color: rgba(15, 23, 42, 0.95);
     backdrop-filter: blur(12px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    position: fixed; /* Fixed position layout rule so it sticks and scrolls */
+    position: fixed; 
     top: 0;
     left: 0;
     width: 100%;
-    padding: 10px 0; /* Reduced padding size for a sleek, slim header look */
-    z-index: 1000;
-    transition: transform 0.3s ease-in-out; /* Smooth transition when sliding out */
-}
-
-/* Script toggle state utility rule to hide upper bar on scroll down */
-header.header-hidden {
-    transform: translateY(-100%);
+    padding: 16px 0; 
+    z-index: 2000;
 }
 
 .nav-container {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between; /* Nembo kushoto, links kulia */
     align-items: center;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0.5rem 2rem; /* Reduced padding from 1.2rem to keep it compact */
+    padding: 0 2rem; 
 }
 
 .logo {
-    font-size: 1.5rem; /* Adjusted down slightly to match slim bar container */
+    font-size: 1.5rem; 
     font-weight: 800;
     letter-spacing: -0.5px;
+    color: #f8fafc;
 }
 
 .logo span {
     color: var(--accent-blue);
+}
+
+.nav-right-side {
+    display: flex;
+    align-items: center;
+    gap: 32px;
 }
 
 .nav-links {
@@ -69,18 +72,217 @@ header.header-hidden {
 .nav-links a {
     color: var(--text-muted);
     text-decoration: none;
-    font-weight: 500;
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
     transition: all 0.3s ease;
 }
 
-.nav-links a:hover {
+.nav-links a:hover, .nav-links a.active {
     color: var(--accent-blue);
 }
 
+/* ==========================================
+    POP-UP CART SIDEBAR (FIXED DESIGN)
+   ========================================== */
+
+/* Main floating cart container */
+.cart-sidebar {
+    position: fixed;
+    top: 15px;
+    right: -400px; /* Hidden default off-canvas */
+    width: 380px;
+    height: calc(100% - 30px);
+    background: #0f172a; /* Nimeibadilisha kuwa slate ya giza ili ilingane na giza la web yako */
+    border: 1px solid rgba(56, 189, 248, 0.2); /* Mstari laini wa neon wa cyan */
+    box-shadow: -10px 0 40px rgba(0, 0, 0, 0.6); 
+    z-index: 3000;
+    transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1); 
+    padding: 25px;
+    display: flex;
+    flex-direction: column; /* Inafanya footer isukumwe chini kabisa */
+    border-radius: 20px; 
+    box-sizing: border-box;
+}
+
+/* Inatumika wakati JS inafungua kikapu (Inasogeza kulia iwe 15px) */
+.cart-sidebar.open {
+    right: 15px;
+}
+
+/* Header section inside the cart */
+.cart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); 
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+}
+
+.cart-title-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.cart-title-wrapper span {
+    font-size: 1.3rem;
+}
+
+.cart-title-wrapper h3 {
+    margin: 0;
+    color: #ffffff; /* Maandishi sasa ni meupe safi */
+    font-size: 1.4rem;
+    font-weight: 700;
+}
+
+/* Circle close button */
+.close-cart {
+    font-size: 1.5rem;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #94a3b8;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.close-cart:hover {
+    background: #ef4444;
+    color: #ffffff;
+    border-color: #ef4444;
+}
+
+/* Scrollable items wrapper */
+.cart-items-container {
+    flex: 1; /* Inachukua nafasi yote ya katikati */
+    overflow-y: auto; /* Inaleta scrollbar kama vitu vikiwa vingi */
+    padding-right: 5px;
+    margin-bottom: 15px;
+}
+
+/* Individual cart item row layout */
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px;
+    background: #ffffff; /* Background ya kadi ya bidhaa */
+    border-radius: 12px; 
+    margin-bottom: 12px;
+    border: 1px solid rgba(31, 26, 26, 0.671);
+}
+
+.cart-item-details {
+    flex: 1;
+}
+
+.cart-item-details h4 {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #000000; /* Jina la bidhaa linaonekana vizuri sasa */
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.cart-item-details p {
+    margin: 0;
+    font-size: 0.8rem;
+    color: var(--accent-blue); /* Bei inang'aa kwa rangi ya cyan */
+    font-weight: 700;
+}
+
+/* Delete item button */
+.remove-btn {
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid rgba(239, 68, 68, 0.2);
+    color: #f87171;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.8rem;
+    padding: 6px 12px;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+.remove-btn:hover {
+    background: #ef4444;
+    color: white;
+}
+
+/* Bottom elements summary container (Imekwama Chini!) */
+.cart-footer {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 15px;
+    background: #ffffff;
+    margin-top: auto; /* Hii inahakikisha inasukumwa chini masaa yote */
+}
+
+/* Total calculations block */
+.cart-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #1e293b; 
+    padding: 15px;
+    border-radius: 12px;
+    margin-bottom: 15px;
+    border: 1px solid rgba(26, 14, 58, 0.432);
+}
+
+.total-label {
+    color: #000000;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.total-price {
+    color: #020504; /* Rangi ya kijani safi ya pesa */
+    font-size: 1.2rem;
+    font-weight: 800;
+}
+
+/* Checkout action button */
+.checkout-btn {
+    width: 100%;
+    background: linear-gradient(135deg, var(--accent-blue), #0e0f0f);
+    color: #060c1a;
+    border: none;
+    padding: 16px;
+    font-size: 1rem;
+    font-weight: 700;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    box-shadow: 0 4px 15px rgba(56, 189, 248, 0.2);
+}
+
+.checkout-btn:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.1);
+    box-shadow: 0 6px 20px rgba(56, 189, 248, 0.4);
+}
+
+.checkout-btn:active {
+    transform: scale(0.98);
+}
 /* --- Section Formatting Utilities --- */
+.main-content {
+    width: 100%;
+    padding-top: 75px; /* Nafasi ili maudhui yasijifiche chini ya header ya juu */
+}
+
 section {
-    padding: 120px 2rem 90px 2rem; /* Added extra top padding so content doesn't hide behind fixed header */
-    max-width: 1200px;
+    padding: 50px 0.9rem; 
+    max-width: 12900px;
     margin: 0 auto;
 }
 
@@ -88,11 +290,6 @@ section {
     background-color: #111827;
     max-width: 100%;
     width: 100%;
-}
-
-.about-container {
-    max-width: 1200px;
-    margin: 0 auto;
 }
 
 .section-title {
@@ -110,64 +307,128 @@ section {
     border-radius: 2px;
 }
 
-/* --- Home / Hero Layout --- */
-#home {
-    padding: 0 0 90px 0;
+/* --- Centered Hero Area (Home Page tu) --- */
+#home-section {
+    padding: 0;
+    max-width: 100%;
 }
 
 .hero-banner {
-    background: linear-gradient(rgba(15, 23, 42, 0.75), rgba(15, 23, 42, 0.85)), 
-                url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?fm=jpg&q=60&w=3000') no-repeat center center/cover;
-    height: 520px;
+    position: relative;
+    background: linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.9)),
+                url('https://images.unsplash.com/photo-1621319332247-ce870cdad56c?w=1400&auto=format&fit=crop&q=80') no-repeat center center / cover;
+    height: calc(100vh - 75px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; 
+    text-align: center; 
+    padding: 0 2rem;
+    overflow: hidden;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+}
+
+.hero-eyebrow {
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--accent-blue);
+    margin-bottom: 20px;
     display: flex;
     align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 0 2rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    gap: 12px;
+}
+
+.hero-eyebrow::before, .hero-eyebrow::after {
+    content: '';
+    display: inline-block;
+    width: 24px;
+    height: 2px;
+    background: var(--accent-blue);
 }
 
 .hero-content h1 {
-    font-size: 3.5rem;
+    font-size: 4.5rem;
     font-weight: 900;
-    letter-spacing: -1.5px;
-    margin-bottom: 20px;
-    background: linear-gradient(to right, #fff, var(--accent-blue));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    line-height: 1.1;
+    letter-spacing: -2px;
+    margin-bottom: 24px;
+    color: #ffffff;
 }
 
 .hero-content p {
-    font-size: 1.25rem;
-    color: var(--text-muted);
-    max-width: 600px;
-    margin: 0 auto 35px auto;
+    font-size: 1.15rem;
+    color: #94a3b8;
+    max-width: 580px;
+    margin: 0 auto 40px auto;
+    line-height: 1.75;
 }
 
 .cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
     text-decoration: none;
-    background: linear-gradient(135deg, var(--accent-glow), #1d4ed8);
-    color: white;
-    padding: 14px 32px;
+    background: var(--accent-blue);
+    color: #060c1a;
+    padding: 16px 40px;
     border-radius: 8px;
-    font-weight: 600;
-    transition: all 0.3s;
-    display: inline-block;
-    box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+    font-weight: 800;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: all 0.25s ease;
+    box-shadow: 0 0 30px rgba(56, 189, 248, 0.3);
 }
-
 .cta-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(37, 99, 235, 0.5);
+    background: #ffffff;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 40px rgba(56, 189, 248, 0.5);
 }
 
-.business-summary p {
-    text-align: center;
-    max-width: 850px;
-    margin: 0 auto;
-    color: var(--text-muted);
-    font-size: 1.15rem;
-    line-height: 1.8;
+.hero-stats {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+    margin-top: 50px;
+}
+
+.stat {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.stat-num {
+    font-size: 1.7rem;
+    font-weight: 900;
+    color: #ffffff;
+}
+
+.stat-label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: #475569;
+}
+
+.stat-divider {
+    width: 1px;
+    height: 40px;
+    background: rgba(255,255,255,0.12);
 }
 
 /* --- Product Grid & Cards --- */
@@ -236,16 +497,46 @@ section {
 
 .product-qty {
     font-size: 0.9rem;
-    color: #34d399; /* Smooth green for in stock status */
+    color: #34d399;
     font-weight: 500;
 }
 
+.add-to-cart-btn {
+    margin-top: 14px;
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(135deg, var(--accent-glow), #1d4ed8);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.add-to-cart-btn:hover {
+    filter: brightness(1.1);
+}
+
 /* --- About Content --- */
+.about-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    /* Inahakikisha ukurasa una urefu wa kutosha kuzuia footer kukata maudhui */
+    min-height: calc(100vh - 160px); 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
 .about-content {
     display: flex;
     flex-wrap: wrap;
     gap: 50px;
     align-items: center;
+    margin-top: 20px;
+    padding-bottom: 60px; /* Inatoa pumzi kati ya picha na footer */
 }
 
 .about-text {
@@ -270,24 +561,43 @@ section {
 
 .about-img {
     width: 100%;
-    height: 200px;
+    height: 280px; /* Imeongezwa urefu kidogo ili picha zionekane vizuri */
     object-fit: cover;
-    border-radius: 8px;
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 12px; /* Smooth corners zinazolingana na kadi za bidhaa */
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); /* Kivuli kidogo kuleta muonekano wa kisasa */
+    transition: transform 0.3s ease;
 }
 
-/* --- Contact & Inputs Configuration --- */
+.about-img:hover {
+    transform: scale(1.03); /* Inajisogeza mbele kidogo ikiguswa */
+}
+
+/* --- Footer Alignment Fix --- */
+footer {
+    background-color: #090d16;
+    text-align: center;
+    padding: 30px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    width: 100%;
+    margin-top: auto; /* Inalazimisha footer kukaa chini kabisa siku zote */
+    clear: both;
+}
+
+/* --- Contact & Forms --- */
 .contact-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     gap: 50px;
+    /* Inahakikisha ukurasa una urefu wa kutosha kuzuia footer kupanda juu */
+    min-height: calc(100vh - 250px); 
+    padding-bottom: 50px;
 }
 
-/* Fixed color contrast overrides here to stay perfectly readable on deep slate backgrounds */
-.contact-info h3, 
-.contact-form-card h3,
-.info-item strong {
-    color: #ffffff !important;
+.contact-info h3, .contact-form-card h3 {
+    color: #ffffff;
     font-size: 1.5rem;
     font-weight: 700;
     margin-bottom: 25px;
@@ -307,21 +617,16 @@ section {
     text-decoration: none;
     font-weight: 600;
     margin-right: 20px;
-    transition: color 0.2s;
 }
 
 .soc-fb { color: #1877f2; }
-.soc-ig { color: #e1306c; }
+.soc-ig { color: #b81a4fbd; }
 .soc-yt { color: #ff0000; }
-
-.social-links a:hover {
-    filter: brightness(1.2);
-}
 
 .map-container {
     width: 100%;
     height: 250px;
-    border-radius: 16px; /* Symmetrical smooth curve edges */
+    border-radius: 16px;
     overflow: hidden;
     border: 1px solid rgba(255, 255, 255, 0.1);
     margin-top: 15px;
@@ -333,7 +638,6 @@ section {
     border: 0;
 }
 
-/* Form Styles */
 .contact-form-card {
     background-color: var(--bg-card);
     padding: 40px;
@@ -356,10 +660,9 @@ section {
     font-size: 0.9rem;
     color: var(--text-muted);
     margin-bottom: 8px;
-    font-weight: 500;
 }
 
-.form-group input, .form-group textarea {
+.form-group input {
     width: 100%;
     background-color: var(--bg-dark);
     border: 1px solid rgba(255, 255, 255, 0.1);
@@ -367,16 +670,23 @@ section {
     padding: 12px;
     color: white;
     font-size: 1rem;
-    transition: border-color 0.3s ease;
 }
 
-.form-group input:focus, .form-group textarea:focus {
-    outline: none;
-    border-color: var(--accent-blue);
+/* Fixed Comment Box */
+.form-group textarea {
+    width: 100%;
+    background-color: var(--bg-dark);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    padding: 12px;
+    color: white;
+    font-size: 1rem;
+    resize: none; /* Inazuia mtumiaji kukuza au kupunguza box hili */
+    height: 90px; /* Urefu maalum ulioganda */
 }
 
 .submit-btn {
-    background: linear-gradient(135deg, var(--accent-glow), #1d4ed8);
+    background: linear-gradient(135deg, #38bdf8, #1d4ed8);
     color: white;
     border: none;
     padding: 14px;
@@ -385,62 +695,37 @@ section {
     font-size: 1rem;
     font-weight: 600;
     cursor: pointer;
-    transition: all 0.3s ease;
 }
 
-.submit-btn:hover {
-    filter: brightness(1.1);
-    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
-}
-
-/* --- Footer --- */
-footer {
-    background-color: #090d16;
-    text-align: center;
-    padding: 30px;
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
-    color: var(--text-muted);
-    font-size: 0.95rem;
-}
-
-/* Responsive Scaling Adjustments */
-@media (max-width: 768px) {
-    .nav-links { display: none; } 
-    .hero-content h1 { font-size: 2.4rem; }
-    .form-row { flex-direction: column; gap: 0; }
-    section { padding: 100px 1.5rem 60px 1.5rem; }
-}
-
-/* ==========================================
-    POP-UP CART SIDEBAR STYLES
-   ========================================== */
-
-/* Main floating cart container with full rounded corners */
+/* --- Floating Cart Sidebar (Giza la Kisasa & Vitufe Chini) --- */
 .cart-sidebar {
     position: fixed;
     top: 15px;
-    right: -400px; /* Hidden default off canvas */
-    width: 360px;
+    right: -400px; 
+    width: 380px;
     height: calc(100% - 30px);
-    background: #fdfdfdf5; /* Fixed closing bracket bug and cleaned to premium off-white matte */
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12); 
-    z-index: 1000;
+    background: #0f172a; /* Imebadilishwa kuwa ya giza ili majina meupe yaonekane */
+    border: 1px solid rgba(56, 189, 248, 0.2);
+    box-shadow: -10px 0 40px rgba(0, 0, 0, 0.6); 
+    z-index: 3000;
     transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1); 
     padding: 25px;
     display: flex;
     flex-direction: column;
-    border-radius: 24px; 
-    border: 1px solid rgba(0, 0, 0, 0.04);
+    border-radius: 20px; 
     box-sizing: border-box;
 }
 
-/* Header section inside the cart */
+.cart-sidebar.open {
+    right: 15px;
+}
+
 .cart-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 2px solid #e9ecef; 
-    padding-bottom: 18px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); 
+    padding-bottom: 15px;
     margin-bottom: 15px;
 }
 
@@ -452,137 +737,125 @@ footer {
 
 .cart-title-wrapper h3 {
     margin: 0;
-    color: #1a1a1a;
-    font-size: 1.3rem;
+    color: #ffffff; /* Majina ya kikapu yanaonekana sasa */
+    font-size: 1.4rem;
     font-weight: 700;
-    font-family: sans-serif;
 }
 
-/* Circle close button */
 .close-cart {
-    font-size: 1.8rem;
+    font-size: 1.5rem;
     cursor: pointer;
-    background: #f1f3f5;
-    border: none;
-    color: #495057;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #94a3b8;
     width: 36px;
     height: 36px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: all 0.2s ease;
 }
 
 .close-cart:hover {
-    background: #e9ecef;
-    color: #111;
+    background: #ef4444;
+    color: white;
 }
 
-/* Scrollable items wrapper */
 .cart-items-container {
     flex: 1;
     overflow-y: auto;
-    padding-right: 5px;
 }
 
-/* Individual cart item card row layout */
+/* Mpangilio wa kila bidhaa ndani ya kikapu */
 .cart-item {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 16px;
-    background: #ffffff; 
-    border-radius: 16px; 
-    margin-bottom: 12px;
-    border: 1px solid #262627;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+    padding: 12px;
+    background: #1e293b;
+    border-radius: 8px;
+    margin-bottom: 10px;
 }
 
-.cart-item-details h4 {
+.cart-item-info h4 {
+    margin: 0 0 4px 0;
+    color: #ffffff; /* Majina ya simu yanaonekana vizuri hapa */
+    font-size: 0.95rem;
+}
+
+.cart-item-info p {
     margin: 0;
-    font-size: 0.9rem;
-    color: #2b2b2b;
+    color: var(--accent-blue);
     font-weight: 600;
 }
 
-.cart-item-details p {
-    margin: 5px 0 0 0;
-    font-size: 0.9rem;
-    color: #007bff;
-    font-weight: bold;
-}
-
-/* Delete item button */
 .remove-btn {
-    background: none;
-    border: none;
-    color: #dc3545;
+    background: rgba(239, 68, 68, 0.15);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    color: #f87171;
+    padding: 6px 12px;
+    border-radius: 6px;
     cursor: pointer;
-    font-weight: bold;
-    font-size: 0.9rem;
-    transition: color 0.2s ease;
-    padding: 5px 8px;
+    font-size: 0.8rem;
 }
 
 .remove-btn:hover {
-    color: #bd2130;
+    background: #ef4444;
+    color: white;
 }
 
-/* Bottom elements summary container */
+/* Inalazimisha sehemu ya chini igande chini kabisa mara zote */
 .cart-footer {
-    border-top: 2px solid #f1f3f5;
-    padding-top: 20px;
-    margin-top: 15px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 15px;
+    margin-top: auto; 
 }
 
-/* Total calculations block */
 .cart-total {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: #030303;
-    background: #f1f3f5; 
-    padding: 15px 20px;
-    border-radius: 16px;
+    background: #1e293b; 
+    padding: 15px;
+    border-radius: 12px;
     margin-bottom: 15px;
-    border: 1px solid #e9ecef;
+    color: #ffffff;
 }
 
-.total-label {
-    color: #1c1d1d;
-    font-size: 0.95rem;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
-
-.total-price {
-    color: #007bff;
-    font-size: 1.25rem;
-    font-weight: 700;
-}
-
-/* Checkout action button */
 .checkout-btn {
     width: 100%;
-    background: #1e2022;
-    color: #fff;
+    background: linear-gradient(135deg, var(--accent-blue), #2563eb);
+    color: #060c1a;
     border: none;
-    padding: 15px;
+    padding: 16px;
+    font-weight: 700;
     font-size: 1rem;
-    font-weight: 600;
-    border-radius: 16px;
+    border-radius: 12px;
     cursor: pointer;
-    transition: background 0.2s, transform 0.1s;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transition: all 0.2s ease;
 }
 
 .checkout-btn:hover {
-    background: #222;
+    transform: translateY(-2px);
+    filter: brightness(1.1);
 }
 
-.checkout-btn:active {
-    transform: scale(0.98);
+/* --- Footer Dynamic Push --- */
+footer {
+    background-color: #090d16;
+    text-align: center;
+    padding: 30px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    color: var(--text-muted);
+    margin-top: auto; /* Inasukuma footer chini kwenye kurasa zote */
 }
+
+/* Responsive View */
+@media (max-width: 768px) {
+    .nav-links { display: none; } 
+    .nav-container { padding: 0 20px; }
+    .hero-content h1 { font-size: 2.8rem; }
+    .hero-stats { gap: 16px; flex-wrap: wrap; }
+    .stat-divider { display: none; }
+    .form-row { flex-direction: column; }
+}
+

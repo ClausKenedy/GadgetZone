@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GadgetZone | Products</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+
+    <header>
+        <nav class="nav-container">
+            <div class="logo">Gadget<span>Zone</span></div>
+            <ul class="nav-links">
+                <li><a href="home.html" id="link-home">Home</a></li>
+                <li><a href="product.html" id="link-products" class="active">Products</a></li>
+                <li><a href="about.html" id="link-about">About</a></li>
+                <li><a href="contact.html" id="link-contact">Contact</a></li>
+                <li>
+                    <div class="cart-nav" onclick="toggleCartPanel(true)" style="cursor: pointer; display: flex; align-items: center; gap: 5px;">
+                        🛒 Cart (<span id="cart-counter">0</span>)
+                    </div>
+                </li>
+            </ul>
+        </nav> 
+    </header>
+
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <div class="cart-title-wrapper">
+                <span>🛒</span>
+                <h3>Your Cart</h3>
+            </div>
+            <button class="close-cart" onclick="toggleCartPanel(false)">&times;</button>
+        </div>
+        
+        <div class="cart-items-container" id="cartItemsList">
+        </div>
+        
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span class="total-label">Total Amount</span>
+                <span id="cartTotalPrice" class="total-price">0 Tsh</span>
+            </div>
+            
+            <button class="checkout-btn" onclick="alert('Proceeding to secure checkout...')">
+                Proceed to Checkout
+            </button>
+        </div>
+    </div>
+
+    <section id="products">
+        <h2 class="section-title" id="prod-title">Featured Products</h2>
+        <div class="title-underline"></div>
+        <div class="product-grid">
+            <div class="product-card">
+                <div class="product-image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=500" alt="Laptop">
+                </div>
+                <div class="product-info">
+                    <div class="product-brand">MacBook</div>
+                    <div class="product-name" id="p1-name">Apple MacBook Pro 14</div>
+                    <div class="product-price">1,850,000 Tsh</div>
+                    <div class="product-qty"><span id="p1-stock">In Stock:</span> 12 Units</div>
+                    <button class="add-to-cart-btn" onclick="addToCart('Apple MacBook Pro 14\'', 1850000)">Add to Cart</button>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1610792516307-ea5acd9c3b00?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c2Ftc3VuZyUyMGdhbGF4eSUyMHMyNiUyMHVsdHJhfGVufDB8fDB8fHww" alt="Smartphone">
+                </div>
+                <div class="product-info">
+                    <div class="product-brand">Samsung</div>
+                    <div class="product-name" id="p2-name">Samsung Galaxy S21 Ultra</div>
+                    <div class="product-price">850,000 Tsh</div>
+                    <div class="product-qty"><span id="p2-stock">In Stock:</span> 25 Units</div>
+                    <button class="add-to-cart-btn" onclick="addToCart('Samsung Galaxy S21 Ultra', 850000)">Add to Cart</button>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1573148195900-7845dcb9b127?w=500" alt="Smartphone">
+                </div>
+                <div class="product-info">
+                    <div class="product-brand">iPhone</div>
+                    <div class="product-name" id="p3-name">iPhone 13 Pro</div>
+                    <div class="product-price">850,000 Tsh</div>
+                    <div class="product-qty"><span id="p3-stock">In Stock:</span> 15 Units</div>
+                    <button class="add-to-cart-btn" onclick="addToCart('iPhone 13 Pro', 850000)">Add to Cart</button>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1777029323593-660a862bf69d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8dml2byUyMHgzMDAlMjB1bHRyYSUyMHNob3djYXNlfGVufDB8fDB8fHww" alt="Smartphone">
+                </div>
+                <div class="product-info">
+                    <div class="product-brand">Vivo</div>
+                    <div class="product-name" id="p4-name">Vivo x300 ultra</div>
+                    <div class="product-price">1,850,000 Tsh</div>
+                    <div class="product-qty"><span id="p4-stock">In Stock:</span> 20 Units</div>
+                    <button class="add-to-cart-btn" onclick="addToCart('Vivo x300 ultra', 1850000)">Add to Cart</button>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image-wrapper">
+                    <img src="https://fdn.gsmarena.com/imgroot/reviews/26/oppo-find-x9-ultra/lifestyle/-1200w5/gsmarena_002.jpg" alt="Smartphone">
+                </div>
+                <div class="product-info">
+                    <div class="product-brand">Oppo</div>
+                    <div class="product-name" id="p5-name">Oppo Find X9 Ultra</div>
+                    <div class="product-price">2,100,000 Tsh</div>
+                    <div class="product-qty"><span id="p5-stock">In Stock:</span> 10 Units</div>
+                    <button class="add-to-cart-btn" onclick="addToCart('Oppo Find X9 Ultra', 2100000)">Add to Cart</button>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image-wrapper">
+                    <img src="https://www.geekwills.com/media/catalog/product/cache/d368225e56c0af8fed569f12698f474d/x/i/xiaomi_17_ultra_leca.jpg" alt="Smartphone" style="width: 100%; height: fit-content;">
+                </div>
+                <div class="product-info">
+                    <div class="product-brand">Xiaomi</div>
+                    <div class="product-name" id="p6-name">Xiaomi 17 Ultra</div>
+                    <div class="product-price">1,890,000 Tsh</div>
+                    <div class="product-qty"><span id="p6-stock">In Stock:</span> 15 Units</div>
+                    <button class="add-to-cart-btn" onclick="addToCart('Xiaomi 17 Ultra', 1890000)">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026 GadgetZone. All Rights Reserved. Prepared for RIT 122 Assignment.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

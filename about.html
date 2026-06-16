@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GadgetZone | About</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+
+    <header>
+        <nav class="nav-container">
+            <div class="logo">Gadget<span>Zone</span></div>
+            <ul class="nav-links">
+                <li><a href="home.html" id="link-home">Home</a></li>
+                <li><a href="product.html" id="link-products">Products</a></li>
+                <li><a href="about.html" id="link-about" class="active">About</a></li>
+                <li><a href="contact.html" id="link-contact">Contact</a></li>
+                <li>
+                    <div class="cart-nav" onclick="toggleCartPanel(true)" style="cursor: pointer; display: flex; align-items: center; gap: 5px;">
+                        🛒 Cart (<span id="cart-counter">0</span>)
+                    </div>
+                </li>
+            </ul>
+        </nav> 
+    </header>
+
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <div class="cart-title-wrapper">
+                <span>🛒</span>
+                <h3>Your Cart</h3>
+            </div>
+            <button class="close-cart" onclick="toggleCartPanel(false)">&times;</button>
+        </div>
+        
+        <div class="cart-items-container" id="cartItemsList">
+        </div>
+        
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span class="total-label">Total Amount</span>
+                <span id="cartTotalPrice" class="total-price">0 Tsh</span>
+            </div>
+            
+            <button class="checkout-btn" onclick="alert('Proceeding to secure checkout...')">
+                Proceed to Checkout
+            </button>
+        </div>
+    </div>
+
+    <section id="about" class="alt-bg">
+        <div class="about-container">
+            <h2 class="section-title" id="about-heading">Who We Are</h2>
+            <div class="title-underline"></div>
+            <div class="about-content">
+                <div class="about-text">
+                    <p id="about-p1">Founded under academic motivation and a passion for tech innovation, GadgetZone aims to bridge the gap between users and authentic hardware devices. We emphasize clean configurations, verified quality standard checks, and complete consumer satisfaction.</p>
+                    <p id="about-p2">Our dedicated development and support engineering teams work daily to provide continuous upgrades and reliable accessories to make your everyday technology workflows faster and smoother.</p>
+                </div>
+                <div class="about-images">
+                    <img src="https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=500" alt="Tech Setup" class="about-img">
+                    <img src="https://images.unsplash.com/photo-1468436139062-f60a71c5c892?w=500" alt="Laptops" class="about-img">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026 GadgetZone. All Rights Reserved. Prepared for RIT 122 Assignment.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GadgetZone | Tech Store</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+
+    <!-- TOP NAVBAR (Kushoto: GadgetZone, Kulia: Navigation & Cart) -->
+    <header>
+        <div class="nav-container">
+            
+            <!-- Logo sasa ipo Kushoto -->
+            <div class="logo">Gadget<span>Zone</span></div>
+
+            <!-- Navigation Links na Cart sasa zipo Kulia -->
+            <div class="nav-right-side">
+                <ul class="nav-links">
+                    <li><a href="home.html" class="active">Home</a></li>
+                    <li><a href="product.html">Products</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+
+                <div class="top-cart-btn" onclick="toggleCartPanel(true)">
+                    <span class="nav-icon">🛒</span>
+                    <span class="cart-badge" id="cart-counter">0</span>
+                </div>
+            </div>
+            
+        </div>
+    </header>
+
+    <!-- CART SIDEBAR -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <div class="cart-title-wrapper">
+                <span>🛒</span>
+                <h3>Your Cart</h3>
+            </div>
+            <button class="close-cart" onclick="toggleCartPanel(false)">&times;</button>
+        </div>
+        <div class="cart-items-container" id="cartItemsList"></div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span class="total-label">Total Amount</span>
+                <span id="cartTotalPrice" class="total-price">0 Tsh</span>
+            </div>
+            <button class="checkout-btn" onclick="alert('Proceeding to secure checkout...')">
+                Proceed to Checkout
+            </button>
+        </div>
+    </div>
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+        <section id="home">
+            <div class="hero-banner">
+                <div class="hero-overlay"></div>
+                <div class="hero-content">
+                    <p class="hero-eyebrow">New Arrivals 2026</p>
+                    <h1 id="hero-title">Step Into<br>The Future<br>Of Tech</h1>
+                    <p id="hero-subtitle">Premium smart devices engineered for your lifestyle — discover what's next.</p>
+                    <a href="product.html" class="cta-btn" id="hero-cta">Explore Shop <span class="btn-arrow">→</span></a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat"><span class="stat-num">500+</span><span class="stat-label">Products</span></div>
+                    <div class="stat-divider"></div>
+                    <div class="stat"><span class="stat-num">12K+</span><span class="stat-label">Customers</span></div>
+                    <div class="stat-divider"></div>
+                    <div class="stat"><span class="stat-num">4.9★</span><span class="stat-label">Rated</span></div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>© 2026 GadgetZone. All Rights Reserved. Prepared for RIT 122 Assignment.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
