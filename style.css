@@ -95,7 +95,7 @@ header {
     width: 380px;
     height: calc(100% - 30px);
     background: #0f172a; /* Nimeibadilisha kuwa slate ya giza ili ilingane na giza la web yako */
-    border: 1px solid rgba(56, 189, 248, 0.2); /* Mstari laini wa neon wa cyan */
+    border: 1px solid rgb(137, 148, 153); /* Mstari laini wa neon wa cyan */
     box-shadow: -10px 0 40px rgba(0, 0, 0, 0.6); 
     z-index: 3000;
     transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1); 
@@ -177,7 +177,7 @@ header {
     background: #ffffff; /* Background ya kadi ya bidhaa */
     border-radius: 12px; 
     margin-bottom: 12px;
-    border: 1px solid rgba(31, 26, 26, 0.671);
+    border: 1px solid rgba(88, 85, 85, 0.671);
 }
 
 .cart-item-details {
@@ -187,7 +187,7 @@ header {
 .cart-item-details h4 {
     margin: 0;
     font-size: 0.9rem;
-    color: #000000; /* Jina la bidhaa linaonekana vizuri sasa */
+    color: #ffffff; /* Jina la bidhaa linaonekana vizuri sasa */
     font-weight: 600;
     margin-bottom: 4px;
 }
@@ -221,7 +221,7 @@ header {
 .cart-footer {
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     padding-top: 15px;
-    background: #ffffff;
+    background: #ffffff00;
     margin-top: auto; /* Hii inahakikisha inasukumwa chini masaa yote */
 }
 
@@ -238,14 +238,14 @@ header {
 }
 
 .total-label {
-    color: #000000;
+    color: #ffffff;
     font-size: 0.85rem;
     text-transform: uppercase;
     letter-spacing: 1px;
 }
 
 .total-price {
-    color: #020504; /* Rangi ya kijani safi ya pesa */
+    color: #ffffff; /* Rangi ya kijani safi ya pesa */
     font-size: 1.2rem;
     font-weight: 800;
 }
