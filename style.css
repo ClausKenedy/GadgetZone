@@ -277,7 +277,7 @@ header {
 /* --- Section Formatting Utilities --- */
 .main-content {
     width: 100%;
-    padding-top: 75px; /* Nafasi ili maudhui yasijifiche chini ya header ya juu */
+    padding-top: 18px; /* Nafasi ili maudhui yasijifiche chini ya header ya juu */
 }
 
 section {
@@ -402,7 +402,7 @@ section {
     align-items: center;
     justify-content: center;
     gap: 32px;
-    margin-top: 50px;
+    margin-top: 30px;
 }
 
 .stat {
@@ -523,8 +523,7 @@ section {
 .about-container {
     max-width: 1200px;
     margin: 0 auto;
-    /* Inahakikisha ukurasa una urefu wa kutosha kuzuia footer kukata maudhui */
-    min-height: calc(100vh - 160px); 
+    /* Inahakikisha ukurasa una urefu wa kutosha kuzuia footer kukata maudhui */ 
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -536,7 +535,6 @@ section {
     gap: 50px;
     align-items: center;
     margin-top: 20px;
-    padding-bottom: 60px; /* Inatoa pumzi kati ya picha na footer */
 }
 
 .about-text {
@@ -593,7 +591,7 @@ footer {
     gap: 50px;
     /* Inahakikisha ukurasa una urefu wa kutosha kuzuia footer kupanda juu */
     min-height: calc(100vh - 250px); 
-    padding-bottom: 50px;
+    padding-bottom: 20px;
 }
 
 .contact-info h3, .contact-form-card h3 {
@@ -629,7 +627,7 @@ footer {
     border-radius: 16px;
     overflow: hidden;
     border: 1px solid rgba(255, 255, 255, 0.1);
-    margin-top: 15px;
+    margin-top: 8;
 }
 
 .map-container iframe {
@@ -647,11 +645,11 @@ footer {
 
 .form-row {
     display: flex;
-    gap: 20px;
+    gap: 10px;
 }
 
 .form-group {
-    margin-bottom: 20px;
+    margin-bottom: 5px;
     width: 100%;
 }
 
@@ -659,7 +657,7 @@ footer {
     display: block;
     font-size: 0.9rem;
     color: var(--text-muted);
-    margin-bottom: 8px;
+    margin-bottom: 5px;
 }
 
 .form-group input {
@@ -682,7 +680,7 @@ footer {
     color: white;
     font-size: 1rem;
     resize: none; /* Inazuia mtumiaji kukuza au kupunguza box hili */
-    height: 90px; /* Urefu maalum ulioganda */
+    height: 50px; /* Urefu maalum ulioganda */
 }
 
 .submit-btn {
@@ -700,7 +698,7 @@ footer {
 /* --- Floating Cart Sidebar (Giza la Kisasa & Vitufe Chini) --- */
 .cart-sidebar {
     position: fixed;
-    top: 15px;
+    top: 8;
     right: -400px; 
     width: 380px;
     height: calc(100% - 30px);
@@ -839,23 +837,49 @@ footer {
     filter: brightness(1.1);
 }
 
-/* --- Footer Dynamic Push --- */
-footer {
-    background-color: #090d16;
-    text-align: center;
-    padding: 30px;
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
-    color: var(--text-muted);
-    margin-top: auto; /* Inasukuma footer chini kwenye kurasa zote */
-}
-
-/* Responsive View */
 @media (max-width: 768px) {
-    .nav-links { display: none; } 
-    .nav-container { padding: 0 20px; }
-    .hero-content h1 { font-size: 2.8rem; }
-    .hero-stats { gap: 16px; flex-wrap: wrap; }
-    .stat-divider { display: none; }
-    .form-row { flex-direction: column; }
-}
+    /* Inazuia navbar isijifunge au kusababisha vitu vya chini kupanda juu */
+    .nav-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 20px;
+        position: relative; /* Muhimu ili menu ishuke vizuri */
+    }
 
+    /* Hii bado inaficha menu ya kawaida, hadi mtu abofye mistari mitatu */
+    .nav-links {
+        .nav-right-side { display: none; }
+    }
+
+    /* Inafanya ile button ya mistari mitatu ionekane kwenye simu */
+    .hamburger {
+        display: flex !important;
+        flex-direction: column;
+        gap: 5px;
+        background: none;
+        border: none;
+        cursor: pointer;
+    }
+
+    .hamburger span {
+        display: block;
+        width: 25px;
+        height: 3px;
+        background-color: white; /* Rangi ya mistari */
+    }
+
+    /* Hii ndio itakayoshusha menu chini ikibofyawa */
+    .nav-links.active {
+        .nav-right-side.active { display: flex !important; }
+        flex-direction: column;
+        position: absolute;
+        top: 100%; /* Inashuka chini kabisa ya navbar */
+        left: 0;
+        width: 100%;
+        background-color: #060c1a; /* Rangi ya background ya store yako */
+        padding: 20px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        z-index: 999;
+    }
+}

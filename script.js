@@ -107,3 +107,13 @@ window.addEventListener('scroll', () => {
     // Update the last scroll position
     lastScrollY = window.scrollY;
 });
+
+// Kodi ya kufungua na kufunga Hamburger Menu kwenye simu
+const hamburger = document.getElementById('hamburger');
+const navRightSide = document.querySelector('.nav-right-side');
+
+if (hamburger && navRightSide) {
+    hamburger.addEventListener('click', () => {
+        navRightSide.classList.toggle('active');
+    });
+}
